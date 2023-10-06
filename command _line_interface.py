@@ -25,7 +25,7 @@ def show_phone(args, contacts):
         return f'There is no phone number for {name} saved'
     
 def show_all(contacts):
-    text = ("{:.<15}{:<10}\n".format('Name', 'Phone Number'))
+    text = "{:.<15}{:<10}\n".format('Name', 'Phone Number')
     try:
         for key, value in contacts.items():
             text += ("{:.<15}{:<10}\n".format(key, value))
