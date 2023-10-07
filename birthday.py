@@ -17,9 +17,9 @@ def get_birthdays_per_week(data):
 
         delta_weeks = (birthday_this_year - current_date).days // 7
 
-        if delta_weeks == 0 and (birthday_this_year.strftime('%A') == 'Saturday' or birthday_this_year.strftime('%A') == 'Sunday'):
+        if delta_weeks == 0 and (birthday_this_year.weekday() in (5, 6)):
             people_with_birthday_next_week.append(["Monday", person['name']])
-        elif delta_weeks == 1 and not (birthday_this_year.strftime('%A') == 'Saturday' or birthday_this_year.strftime('%A') == 'Sunday'):
+        elif delta_weeks == 1 and not (birthday_this_year.weekday() in (5, 6)):
             people_with_birthday_next_week.append(
                 [birthday_this_year.strftime('%A'), person['name']])
 
