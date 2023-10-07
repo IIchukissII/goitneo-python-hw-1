@@ -3,6 +3,7 @@ def parse_input(user_input):
     cmd = cmd.strip().lower()
     return cmd, *args
 
+
 def add_contact(args, contacts):
     if not len(args) < 2:
         name, phone = args
@@ -14,6 +15,7 @@ def add_contact(args, contacts):
     except:
         return 'Contact {name} with phone number: {phone} could not be added.'
 
+
 def show_phone(args, contacts):
     text = ("{:.<15}{:<10}\n".format('Name', 'Phone Number'))
     name = args[0]
@@ -23,7 +25,8 @@ def show_phone(args, contacts):
         return text
     except:
         return f'There is no phone number for {name} saved'
-    
+ 
+  
 def show_all(contacts):
     text = "{:.<15}{:<10}\n".format('Name', 'Phone Number')
     try:
@@ -32,7 +35,8 @@ def show_all(contacts):
         return text
     except:
         return f'There are no phone number saved'
-    
+ 
+  
 def main():
     contacts = {}
     print("Welcome to the assistant bot!")
