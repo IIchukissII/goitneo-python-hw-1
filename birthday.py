@@ -1,11 +1,11 @@
 import datetime
 
-
 def get_birthdays_per_week(data):
     current_date = datetime.date.today()
     people_with_birthday_next_week = []
     people_with_birthday_next_week_dict = {}
-    message = ''
+    message = (f'Today is {current_date.strftime("%A %d %B %Y")}\n')
+    message += ('The following people have their birthdays next week:\n')
 
     for person in data:
         person_birthday = person["birthday"]
@@ -31,6 +31,28 @@ def get_birthdays_per_week(data):
 
 #    message += "{:>15}: {:<}\n".format('Day of week', 'Name')
     for key, value in people_with_birthday_next_week_dict.items():
-        message += "{:>15}: {:<}\n".format(key, ', '.join(value))
+        message += "{:<15}: {:<}\n".format(key, ', '.join(value))
 
     return message
+
+
+
+if __name__ == "__main__":
+    from faker import Faker
+
+    fake = Faker()
+
+    def get_fake_users(amount):
+        users_list = []
+        for i in range(amount):
+            mock = {
+                "name": fake.name(),
+                "email": fake.email(),
+                "phone": fake.phone_number(),
+                "birthday": fake.date_object()
+            }
+            users_list.append(mock)
+        return users_list
+
+    data = get_fake_users(200)
+    print(get_birthdays_per_week(data))
